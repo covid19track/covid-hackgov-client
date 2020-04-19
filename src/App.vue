@@ -1,12 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navigation />
     <router-view />
+    <Footer />
   </div>
 </template>
+
+<script type="text/javascript">
+  import Navigation from "@/components/Navigation.vue";
+  import Footer from "@/components/Footer.vue";
+
+  import { Component, Prop, Vue } from "vue-property-decorator";
+
+  @Component({ components: {Navigation, Footer} })
+  export default class App extends Vue {
+    // @Prop() private msg!: string;
+  }
+</script>
 
 <style lang="scss">
 #app {
