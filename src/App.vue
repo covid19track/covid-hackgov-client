@@ -7,20 +7,22 @@
 </template>
 
 <script type="text/javascript">
-  import Navigation from "@/components/Navigation.vue";
-  import Footer from "@/components/Footer.vue";
+import Navigation from "@/components/Navigation.vue";
+import Footer from "@/components/Footer.vue";
 
-  import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
-  @Component({ components: {Navigation, Footer} })
-  export default class App extends Vue {
-    // @Prop() private msg!: string;
-  }
+@Component({ components: { Navigation, Footer } })
+export default class App extends Vue {
+  // @Prop() private msg!: string;
+}
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap");
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Baloo Chettan 2", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

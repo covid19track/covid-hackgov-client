@@ -1,18 +1,25 @@
 <template>
-  <div id="footer">
-    | <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/charts">Charts</router-link> |
-    <router-link to="/maps">Maps</router-link> |
-    <router-link to="/info">Info</router-link> |
+  <div id="footer" class="fixed-bottom">
+    <p id="link">
+      Made with
+      <img src="https://img.icons8.com/cute-clipart/25/000000/like.png" /> by
+      the
+      <a target="_blank" href="https://github.com/covid19track"
+        >COVID-19.Tracker team</a
+      >
+    </p>
   </div>
 </template>
 
 <style media="screen">
-   #footer {
-    background-color: black;
-    color: white;
-  }
+#footer {
+  background-color: black;
+  color: white;
+}
+
+#link {
+  margin: 1em;
+}
 </style>
 
 <script lang="ts">
