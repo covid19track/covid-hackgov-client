@@ -75,7 +75,7 @@ export default class Navigation extends Vue {
   background-color: transparent;
   color: #fff !important;
   border: transparent;
-  border-radius: 3px;
+  border-radius: 0px;
   border-bottom: 2px #fff solid;
   transition: 0.7s;
   height: inherit;
@@ -84,10 +84,12 @@ export default class Navigation extends Vue {
 .mr-sm-2:focus {
   color: #fff !important;
   border-color: inherit;
+  border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .mr-sm-2:hover {
+  border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
