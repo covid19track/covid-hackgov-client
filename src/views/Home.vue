@@ -1,17 +1,12 @@
 <template>
   <div class="home">
-    <h1>This is the Home page</h1>
+    <h1>Αρχική σελίδα</h1>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-// import ComponentFileName from "@/components/ComponentFileName.vue";
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
 
-export default {
-  name: "Home",
-  components: {
-    // ComponentFileName
-  }
-};
+@Component
+export default class Home extends Vue {}
 </script>

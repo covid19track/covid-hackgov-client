@@ -1,44 +1,65 @@
 <template>
   <div id="app">
     <Navigation />
-    <router-view />
+    <vuescroll :ops="ops">
+      <router-view />
+    </vuescroll>
     <Footer />
   </div>
 </template>
 
-<script type="text/javascript">
+<script type="ts">
+import { Component, Vue } from "vue-property-decorator";
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
+import vuescroll from "vuescroll";
 
-import { Component, Prop, Vue } from "vue-property-decorator";
-
-@Component({ components: { Navigation, Footer } })
+@Component({
+  components: {
+    Navigation,
+    Footer,
+    vuescroll
+  }
+})
 export default class App extends Vue {
-  // @Prop() private msg!: string;
+  data() {
+    return {
+      ops: {
+        scrollPanel: {
+          easing: "easeInOutQuad"
+        },
+        bar: {
+          background: "whitesmoke"
+        }
+      }
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-#app {
-  font-family: "Baloo Chettan 2", cursive;
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: whitesmoke;
+  scroll-behavior: smooth;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+#app {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #202225;
+  position: absolute;
+  overflow: hidden;
 }
 </style>

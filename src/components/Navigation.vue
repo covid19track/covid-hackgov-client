@@ -1,110 +1,174 @@
 <template>
-  <div id="nav">
-    <b-navbar toggleable="lg" type="light" variant="primary">
-      <b-navbar-brand href="/"
-        ><img src="https://img.icons8.com/color/40/000000/escape-mask.png"
-      /></b-navbar-brand>
-
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <!--<router-link to=""></router-link>-->
-          <b-nav-item href="/">Home</b-nav-item>
-          <b-nav-item href="/charts">Charts</b-nav-item>
-          <b-nav-item href="/map">Live Map</b-nav-item>
-          <b-nav-item href="/info">Virus Info</b-nav-item>
-          <b-nav-item href="/devs">Devlopers</b-nav-item>
-        </b-navbar-nav>
-
-        <b-navbar-nav class="ml-auto">
-          <b-nav-form>
-            <b-form-input
-              size="sm"
-              class="mr-sm-2"
-              placeholder="Enter Country"
-            ></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit"
-              >Search</b-button
-            >
-          </b-nav-form>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
-  </div>
+  <vue-navigation-bar :options="navbarOptions" />
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Navigation extends Vue {
-  // @Prop() private msg!: string;
+  data() {
+    return {
+      navbarOptions: {
+        elementId: "main-navbar",
+        isUsingVueRouter: true,
+        mobileBreakpoint: 992,
+        showBrandImageInMobilePopup: true,
+        ariaLabelMainNav: "Main Navigation",
+        tooltipAnimationType: "shift-away",
+        menuOptionsLeft: [
+          {
+            type: "link",
+            text: "Αρχική",
+            path: "/",
+            class: "link",
+            iconLeft:
+              '<img src="https://img.icons8.com/windows/25/000000/home.png" style="filter: invert(100%); vertical-align: middle;"/>',
+          },
+          {
+            type: "link",
+            text: "Διαγράμματα",
+            path: "/charts",
+            class: "link",
+            iconLeft:
+              '<img src="https://img.icons8.com/windows/25/000000/rebalance-portfolio.png" style="filter: invert(100%); vertical-align: middle;"/>',
+          },
+          {
+            type: "link",
+            text: "Πληροφορίες COVID-19",
+            path: "/info",
+            class: "link",
+            iconLeft:
+              '<img src="https://img.icons8.com/windows/25/000000/info.png" style="filter: invert(100%); vertical-align: middle;"/>',
+          },
+          {
+            type: "link",
+            text: "Χάρτης πραγματικού χρόνου",
+            path: "/map",
+            class: "link",
+            iconLeft:
+              '<img src="https://img.icons8.com/windows/25/000000/map.png" style="filter: invert(100%); vertical-align: middle;"/>',
+          },
+          {
+            type: "link",
+            text: "Προγραμματιστές",
+            path: "/devs",
+            class: "link",
+            iconLeft:
+              '<img src="https://img.icons8.com/windows/25/000000/code-file.png" style="filter: invert(100%); vertical-align: middle;"/>',
+          },
+        ],
+        menuOptionsRight: [],
+      },
+    };
+  }
 }
 </script>
 
-<style scoped lang="scss">
-#nav {
-  padding: 0;
-  box-shadow: 0px 1px 13px 0px rgba(0, 0, 0, 0.75);
+<style lang="scss">
+#main-navbar {
+  background-color: #010101;
 }
 
-.nav-link,
-.navbar-brand,
-.navbar-toggler {
-  color: #fff !important;
-}
+.vnb {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
 
-.navbar-expand-lg {
-  background: red;
-}
+  &__menu-options {
+    padding-left: 15px !important;
 
-.nav-link {
-  transition: 0.7s;
-  margin: 0;
-  border-bottom: 2px solid transparent;
-}
+    &__option {
+      &:not(:last-child) {
+        margin-right: 0px !important;
+      }
+      text-decoration: none !important;
+      outline: none !important;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-.nav-link:hover {
-  border-color: #fff;
-  border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+      &__link {
+        padding: 15px !important;
+        text-decoration: none !important;
+        outline: none !important;
+        color: whitesmoke !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        font-weight: normal !important;
+        transition: all 0.3s ease-in-out !important;
+        border-bottom: 2px solid #010101 !important;
 
-.mr-sm-2 {
-  background-color: transparent;
-  color: #fff !important;
-  border: transparent;
-  border-radius: 0px;
-  border-bottom: 2px #fff solid;
-  transition: 0.7s;
-  height: inherit;
-}
+        &:hover {
+          border-bottom: 2px solid whitesmoke !important;
+          background-color: lighten(#010101, 10%);
+          color: whitesmoke !important;
+        }
+      }
+    }
+  }
 
-.mr-sm-2:focus {
-  color: #fff !important;
-  border-color: inherit;
-  border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+  &__collapse-button {
+    padding: 15px !important;
+    text-decoration: none !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-.mr-sm-2:hover {
-  border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+    &__image {
+      filter: invert(100%) !important;
+      content: url("https://img.icons8.com/windows/32/000000/menu.png");
+    }
+  }
 
-::placeholder {
-  color: #fff !important;
-}
+  &__popup {
+    background: #18191c !important;
+    box-shadow: 0px 00px 10px #010101 !important;
 
-.my-sm-0 {
-  transition: 0.7s;
-  border: 2px #fff solid;
-  background-color: transparent;
-}
+    &__top {
+      background: #18191c !important;
+      border-left: 1px solid #18191c !important;
+      border-right: 1px solid #18191c !important;
+      border-top: 1px solid #18191c !important;
+      border-top-right-radius: 6px;
+      border-top-left-radius: 6px;
 
-.my-sm-0:hover {
-  border: 2px #fff solid;
-  background-color: rgba(0, 0, 0, 0.5);
+      &__close-button {
+        text-decoration: none !important;
+        outline: none !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        &__image {
+          filter: invert(100%) !important;
+          content: url("https://img.icons8.com/windows/26/000000/close-window.png");
+          max-height: 26px !important;
+        }
+      }
+    }
+
+    &__bottom {
+      background: #18191c !important;
+      border-left: 1px solid #18191c !important;
+      border-right: 1px solid #18191c !important;
+      border-bottom: 1px solid #18191c !important;
+      border-bottom-right-radius: 0px !important;
+      border-bottom-left-radius: 0px !important;
+      transition: all 0.3s ease-in-out;
+
+      &__menu-options {
+        &__option {
+          text-decoration: none !important;
+          outline: none !important;
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+          &__link {
+            color: whitesmoke !important;
+            border-left: 2px solid #18191c !important;
+
+            &:hover {
+              color: whitesmoke !important;
+              border-left: 2px solid whitesmoke !important;
+              background: lighten(#18191c, 10%) !important;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 </style>
