@@ -1,22 +1,22 @@
 <template>
-  <div class="info">
-    <h1>Πληροφορίες</h1>
-    <div class="medical__info infobox">
-      <h3>Μοριακή βιολογία</h3>
-      <p>
+  <div class="view">
+    <div class="header">Πληροφορίες</div>
+    <div class="medical_info">
+      <div class="header2">Μοριακή βιολογία</div>
+      <div class="text">
         Πληροφορίες για τα πλασμίδια του SARS-CoV-2
-      </p>
+      </div>
       <div class="img__box">
-        <p>Linear Plasmid</p>
+        <div class="header2">Linear Plasmid</div>
         <img
           src="https://github.com/covid19track/covid-biopython/raw/master/data/output/plasmid_linear.png"
           alt="Missing Raw Output"
         />
       </div>
       <div class="img__box">
-        <p>Circular Plasmid</p>
+        <div class="header2">Circular Plasmid</div>
         <img
-          src="https://github.com/covid19track/covid-biopython/blob/master/data/output/plasmid_circular.png"
+          src="https://github.com/covid19track/covid-biopython/raw/master/data/output/plasmid_circular.png"
           alt="Missing Raw Output"
         />
       </div>
@@ -25,18 +25,12 @@
 </template>
 
 <style lang="scss">
-.medical__info {
+.medical_info {
   background: #18191c;
   border-radius: 6px;
-  margin-left: 25%;
-  margin-right: 25%;
-  width: fit-content;
+  width: 100%;
+  overflow: auto;
   height: fit-content;
-}
-
-.img__box p {
-  font-size: 2.5rem;
-  font-weight: 900;
 }
 </style>
 

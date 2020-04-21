@@ -1,6 +1,6 @@
 <template>
-  <div class="charts">
-    <h1>Διαγράμματα</h1>
+  <div class="view">
+    <div class="header">Διαγράμματα</div>
   </div>
 </template>
 

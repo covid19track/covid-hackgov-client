@@ -10,21 +10,11 @@ export default class Navigation extends Vue {
   data() {
     return {
       navbarOptions: {
-        elementId: "main-navbar",
+        tooltipAnimationType: "perspective",
         isUsingVueRouter: true,
-        mobileBreakpoint: 992,
-        showBrandImageInMobilePopup: true,
-        ariaLabelMainNav: "Main Navigation",
-        tooltipAnimationType: "shift-away",
+        showBrandImageInMobilePopup: false,
+        brandImage: "./img/coronavirus.png",
         menuOptionsLeft: [
-          {
-            type: "link",
-            text: "Αρχική",
-            path: "/",
-            class: "link",
-            iconLeft:
-              '<img src="https://img.icons8.com/windows/25/000000/home.png" style="filter: invert(100%); vertical-align: middle;"/>',
-          },
           {
             type: "link",
             text: "Διαγράμματα",
@@ -35,19 +25,27 @@ export default class Navigation extends Vue {
           },
           {
             type: "link",
-            text: "Πληροφορίες COVID-19",
-            path: "/info",
-            class: "link",
+            text: "Πληροφορίες",
             iconLeft:
               '<img src="https://img.icons8.com/windows/25/000000/info.png" style="filter: invert(100%); vertical-align: middle;"/>',
-          },
-          {
-            type: "link",
-            text: "Χάρτης πραγματικού χρόνου",
-            path: "/map",
-            class: "link",
-            iconLeft:
-              '<img src="https://img.icons8.com/windows/25/000000/map.png" style="filter: invert(100%); vertical-align: middle;"/>',
+            subMenuOptions: [
+              {
+                type: "link",
+                text: "Πληροφορίες COVID-19",
+                path: "/info",
+                class: "link",
+                iconLeft:
+                  '<img src="https://img.icons8.com/windows/25/000000/info.png" style="filter: invert(100%); vertical-align: middle;"/>',
+              },
+              {
+                type: "link",
+                text: "Χάρτες",
+                path: "/map",
+                class: "link",
+                iconLeft:
+                  '<img src="https://img.icons8.com/windows/25/000000/map.png" style="filter: invert(100%); vertical-align: middle;"/>',
+              },
+            ],
           },
           {
             type: "link",
@@ -66,40 +64,55 @@ export default class Navigation extends Vue {
 </script>
 
 <style lang="scss">
-#main-navbar {
-  background-color: #010101;
-}
-
 .vnb {
+  background-color: #26262b !important;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 
-  &__menu-options {
-    padding-left: 15px !important;
+  &__brand-image-wrapper {
+    &__link {
+      &__image {
+        max-width: 50px !important;
+        max-height: 50px !important;
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
+  }
 
+  &__menu-options {
     &__option {
       &:not(:last-child) {
         margin-right: 0px !important;
       }
+
       text-decoration: none !important;
       outline: none !important;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
       &__link {
-        padding: 15px !important;
+        padding: 10px !important;
         text-decoration: none !important;
         outline: none !important;
         color: whitesmoke !important;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         font-weight: normal !important;
         transition: all 0.3s ease-in-out !important;
-        border-bottom: 2px solid #010101 !important;
+        border-bottom: 2px solid transparent !important;
+        font-size: 14px !important;
 
         &:hover {
           border-bottom: 2px solid whitesmoke !important;
           background-color: lighten(#010101, 10%);
           color: whitesmoke !important;
         }
+      }
+
+      &__arrow {
+        filter: invert(100%) !important;
+        content: url("https://img.icons8.com/windows/32/000000/expand-arrow.png") !important;
+        max-width: 14px !important;
+        max-height: 14px !important;
       }
     }
   }
@@ -112,21 +125,24 @@ export default class Navigation extends Vue {
 
     &__image {
       filter: invert(100%) !important;
-      content: url("https://img.icons8.com/windows/32/000000/menu.png");
+      content: url("https://img.icons8.com/windows/32/000000/menu.png") !important;
     }
   }
 
   &__popup {
-    background: #18191c !important;
-    box-shadow: 0px 00px 10px #010101 !important;
+    left: 0px !important;
+    top: 0px !important;
+    right: 0px !important;
+    background: transparent !important;
+    box-shadow: 0px 0px 10px #010101 !important;
 
     &__top {
-      background: #18191c !important;
-      border-left: 1px solid #18191c !important;
-      border-right: 1px solid #18191c !important;
-      border-top: 1px solid #18191c !important;
-      border-top-right-radius: 6px;
-      border-top-left-radius: 6px;
+      background: #010101 !important;
+      border: none !important;
+      border-bottom-right-radius: 0px !important;
+      border-bottom-left-radius: 0px !important;
+      border-top-right-radius: 0px !important;
+      border-top-left-radius: 0px !important;
 
       &__close-button {
         text-decoration: none !important;
@@ -142,23 +158,35 @@ export default class Navigation extends Vue {
     }
 
     &__bottom {
-      background: #18191c !important;
-      border-left: 1px solid #18191c !important;
-      border-right: 1px solid #18191c !important;
-      border-bottom: 1px solid #18191c !important;
+      background: #010101 !important;
+      border: none !important;
       border-bottom-right-radius: 0px !important;
       border-bottom-left-radius: 0px !important;
       transition: all 0.3s ease-in-out;
+
+      &__sub-menu-options__option__link {
+        color: whitesmoke !important;
+        border-left: 2px solid transparent !important;
+        font-size: 14px !important;
+        background: #ffffff05 !important;
+
+        &:hover {
+          color: whitesmoke !important;
+          border-left: 2px solid whitesmoke !important;
+          background: lighten(#18191c, 10%) !important;
+        }
+      }
 
       &__menu-options {
         &__option {
           text-decoration: none !important;
           outline: none !important;
-          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+          -webkit-tap-highlight-color: #00000000;
 
           &__link {
             color: whitesmoke !important;
-            border-left: 2px solid #18191c !important;
+            border-left: 2px solid transparent !important;
+            font-size: 14px !important;
 
             &:hover {
               color: whitesmoke !important;
@@ -166,6 +194,39 @@ export default class Navigation extends Vue {
               background: lighten(#18191c, 10%) !important;
             }
           }
+        }
+      }
+    }
+  }
+
+  .tippy-arrow {
+    border-bottom: 8px solid #010101 !important;
+  }
+
+  .tippy-tooltip {
+    background-color: #010101 !important;
+    box-shadow: 0px 0px 10px #01010150 !important;
+  }
+
+  &__sub-menu-options {
+    background-color: #010101 !important;
+
+    &__option {
+      text-decoration: none !important;
+      outline: none !important;
+      -webkit-tap-highlight-color: #00000000;
+
+      &__link {
+        text-decoration: none !important;
+        outline: none !important;
+        color: whitesmoke !important;
+        border-left: 2px solid transparent !important;
+        font-size: 14px !important;
+
+        &:hover {
+          color: whitesmoke !important;
+          border-left: 2px solid whitesmoke !important;
+          background: lighten(#18191c, 10%) !important;
         }
       }
     }

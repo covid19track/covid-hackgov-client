@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>Αρχική σελίδα</h1>
+  <div class="view">
+    <div class="header">Αρχική Σελίδα</div>
   </div>
 </template>
 

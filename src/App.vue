@@ -1,10 +1,12 @@
 <template>
-  <div id="app">
-    <Navigation />
+  <div id="app-mount">
     <vuescroll :ops="ops">
-      <router-view />
+      <div id="app-container">
+        <Navigation />
+        <router-view />
+        <Footer />
+      </div>
     </vuescroll>
-    <Footer />
   </div>
 </template>
 
@@ -26,7 +28,8 @@ export default class App extends Vue {
     return {
       ops: {
         scrollPanel: {
-          easing: "easeInOutQuad"
+          scrollingX: false,
+          easing: "easeInOutQuart"
         },
         bar: {
           background: "whitesmoke"
@@ -40,26 +43,48 @@ export default class App extends Vue {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-body {
-  padding: 0;
+.header {
+  padding: 20px;
+  font-size: 50px;
+  font-weight: 600;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: whitesmoke;
-  scroll-behavior: smooth;
 }
 
-#app {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.header2 {
+  padding: 20px;
+  font-size: 35px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  text-rendering: geometricPrecision;
+  color: whitesmoke;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+#app-mount {
+  width: 100vw;
+  height: 100vh;
+  background-color: #26262b;
+}
+
+#app-container {
   display: flex;
   flex-direction: column;
-  background-color: #202225;
-  position: absolute;
-  overflow: hidden;
+  min-height: 100vh;
+}
+
+.view {
+  flex: 1;
+}
+
+.text {
+  text-align: center;
 }
 </style>

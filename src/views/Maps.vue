@@ -1,6 +1,6 @@
 <template>
-  <div class="map">
-    <h1>Χάρτες</h1>
+  <div class="view">
+    <div class="header">Χάρτες</div>
   </div>
 </template>
 

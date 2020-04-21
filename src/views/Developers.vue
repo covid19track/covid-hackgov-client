@@ -1,6 +1,6 @@
 <template>
-  <div class="devs">
-    <h1>Προγραμματιστές</h1>
+  <div class="view">
+    <div class="header">Προγραμματιστές</div>
   </div>
 </template>
 
