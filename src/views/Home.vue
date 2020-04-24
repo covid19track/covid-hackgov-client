@@ -1,7 +1,7 @@
 <template>
-  <div class="view">
-    <div class="header">Αρχική Σελίδα</div>
-  </div>
+	<div class="view">
+		<div class="header">Αρχική Σελίδα</div>
+	</div>
 </template>
 
 <script lang="ts">
