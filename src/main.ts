@@ -3,9 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import VueRouter from "vue-router";
-import "vue-navigation-bar/dist/vue-navigation-bar.css";
 import VueNavigationBar from "vue-navigation-bar";
 import vuescroll from "vuescroll";
+import "vue-navigation-bar/dist/vue-navigation-bar.css";
 import "normalize.css";
 
 Vue.config.productionTip = false;

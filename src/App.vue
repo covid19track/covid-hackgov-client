@@ -15,6 +15,9 @@ import { Component, Vue } from "vue-property-decorator";
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
 import vuescroll from "vuescroll";
+import axios from "axios";
+
+let HTTP;
 
 @Component({
   components: {
@@ -36,6 +39,43 @@ export default class App extends Vue {
         }
       }
     }
+  }
+
+  createHTTP() {
+    this.$store.dispatch('App/setHTTP', {
+      HTTP: axios.create({
+        baseURL: "https://api.covidtrack.tk/api/v1",
+        headers: {
+          Authorization: this.$store.getters['App/token'],
+        },
+      }),
+    });
+
+    HTTP = this.$store.getters['App/HTTP'];
+  }
+
+  generateToken() {
+    HTTP.get("/genAPIKey").then(resp => localStorage["token"] = resp.data["token"]);
+    this.createHTTP();
+  }
+
+  updateToken() {
+    if(!this.$store.getters['App/token'])
+      this.generateToken();
+    else
+      HTTP.get("/validateAPIKey").then(resp => {
+      if(resp.status === 401)
+        this.generateToken();
+      });
+
+    const token = localStorage.getItem('token');
+
+    this.$store.dispatch('App/setToken', { token });
+  }
+
+  mounted() {
+    this.createHTTP();
+    this.updateToken();
   }
 }
 </script>
